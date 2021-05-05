@@ -1,3 +1,5 @@
+import { Dimensions } from "react-native";
+const { width, height } = Dimensions.get("window");
 export const SIZES = {
   // global sizes
   base: 8,
@@ -15,4 +17,7 @@ export const SIZES = {
   body2: 22,
   body3: 16,
   body4: 14,
+  // app dimensions
+  width,
+  height,
 };
