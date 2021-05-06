@@ -13,4 +13,6 @@ export const COLORS = {
   bgColor: "#FFFFFF",
   fb: "#4267B2",
   google: "#EA4235",
+  activeiconColor: "#487CFF",
+  inAtiveIconColor: "#B4B6BE",
 };

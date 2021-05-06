@@ -3,7 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   TouchableWithoutFeedback,
   ScrollView,
   KeyboardAvoidingView,
@@ -13,32 +12,50 @@ import Button from "../components/forms/Button";
 import Inputs from "../components/forms/Input";
 import { COLORS } from "../constants/colors";
 import { FONTS } from "../constants/fonts";
-import { ICONS } from "../constants/icons";
+import SocialLinks from "../components/forms/SocialLinks";
+import HeaderLogo from "../components/forms/HeaderLogo";
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // Email input
+  const onChangeEmailHandler = (emailVal) => {
+    setEmail(emailVal);
+  };
+  // Password input
+  const onChangePasswordHandler = (passwordVal) => {
+    setPassword(passwordVal);
+  };
+
+  // Submitting data
+  const onSubmitHandler = () => {
+    const user = { email, password };
+    console.log(user);
+  };
 
   return (
     <KeyboardAvoidingView style={styles.container}>
       <ScrollView>
         <View style={styles.container}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Rehat App</Text>
-          </View>
-          {/* <View style={styles.imgContainer}>
-            <Image style={styles.img} source={IMAGES.onboarding_1} />
-          </View> */}
+          <HeaderLogo />
+
           <View style={styles.inputContainer}>
             <Inputs
-              errorMessage="err"
+              value={email}
+              onChangeText={onChangeEmailHandler}
+              textContentType="emailAddress"
               placeholder="Email"
               label="envelope"
               keyboardType="email-address"
             />
             <Inputs
+              onChangeText={onChangePasswordHandler}
+              textContentType="password"
               placeholder="Password"
               label="lock"
-              errorMessage="err"
+              value={password}
               secureTextEntry={!showPassword}
               rightIcon={
                 <Icon
@@ -52,7 +69,7 @@ const LoginScreen = () => {
             <View style={styles.forgotPasswordContainer}>
               <TouchableWithoutFeedback
                 onPress={() => {
-                  console.log("forgot Password");
+                  navigation.navigate("ForgotPassword");
                 }}
               >
                 <Text style={styles.forgotPassword}>ForgotPassword?</Text>
@@ -69,42 +86,16 @@ const LoginScreen = () => {
               }}
               containerStyle={{ alignItems: "center" }}
               title="Login"
-              onPress={() => {
-                console.log("login");
-              }}
+              onPress={onSubmitHandler}
               color={COLORS.black}
               style={styles.btn}
             />
           </View>
           <View style={styles.or}>
-            <Text style={styles.orText}>Or, login with</Text>
+            <Text style={styles.orText}>Or login with</Text>
           </View>
           {/* SOCIAL LOGIN */}
-          <View style={styles.social}>
-            <TouchableWithoutFeedback
-              onPress={() => {
-                console.log("fb");
-              }}
-            >
-              <Image style={styles.socialLogo} source={ICONS.google} />
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback
-              onPress={() => {
-                console.log("gogle");
-              }}
-            >
-              <Image style={styles.socialLogo} source={ICONS.twitter} />
-            </TouchableWithoutFeedback>
-            <Icon name="facebook" size={25} color={COLORS.fb} />
-
-            {/* <TouchableWithoutFeedback
-              onPress={() => {
-                console.log("gogle");
-              }}
-            >
-              <Image style={styles.socialLogo} source={ICONS.twitter} />
-            </TouchableWithoutFeedback> */}
-          </View>
+          <SocialLinks />
           <View
             style={{
               alignItems: "center",
@@ -114,7 +105,7 @@ const LoginScreen = () => {
               Don't have an account? &nbsp;
               <TouchableWithoutFeedback
                 onPress={() => {
-                  console.log("signup");
+                  navigation.navigate("Signup");
                 }}
               >
                 <Text style={styles.signup}>Sign Up</Text>
@@ -126,11 +117,8 @@ const LoginScreen = () => {
     </KeyboardAvoidingView>
   );
 };
+
 const styles = StyleSheet.create({
-  socialLogo: {
-    width: 25,
-    height: 25,
-  },
   signup: {
     ...FONTS.tiny,
     color: COLORS.blue,
@@ -147,12 +135,7 @@ const styles = StyleSheet.create({
   orText: {
     color: COLORS.gray,
   },
-  social: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    padding: 34,
-  },
+
   forgotPassword: {
     paddingBottom: 6,
     paddingTop: 1,
@@ -176,31 +159,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
     alignContent: "center",
     backgroundColor: COLORS.bgColor,
-  },
-  imgContainer: {
-    flex: 1,
-    alignContent: "center",
-    alignItems: "center",
-  },
-  img: {
-    flex: 1,
-    margin: 20,
-    width: 400,
-    height: 400,
-    alignContent: "center",
-    alignItems: "center",
-  },
-  titleContainer: {
-    flex: 1,
-    alignItems: "center",
-    marginTop: 73,
-    justifyContent: "center",
-  },
-  title: {
-    marginTop: -12,
-    fontSize: 40,
-    ...FONTS.h1,
-    color: COLORS.blue,
   },
 });
 

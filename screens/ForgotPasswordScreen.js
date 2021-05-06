@@ -3,6 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
+  Image,
   TouchableWithoutFeedback,
   ScrollView,
   KeyboardAvoidingView,
@@ -14,44 +15,21 @@ import { COLORS } from "../constants/colors";
 import { FONTS } from "../constants/fonts";
 import HeaderLogo from "../components/forms/HeaderLogo";
 
-const SignupScreen = ({ navigation }) => {
-  const [showPassword, setShowPassword] = useState(false);
+const ForgotPasswordScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
 
   // Email input
   const onChangeEmailHandler = (emailVal) => {
     setEmail(emailVal);
-  };
-  // Password input
-  const onChangePasswordHandler = (passwordVal) => {
-    setPassword(passwordVal);
-  };
-  const onChangeUsernameHandler = (usernameVal) => {
-    setUsername(usernameVal);
-  };
-  // Submitting data
-  const onSubmitHandler = () => {
-    const user = { email, password, username };
-    console.log(user);
   };
 
   return (
     <KeyboardAvoidingView style={styles.container}>
       <ScrollView>
         <View style={styles.container}>
-          {/* logo */}
           <HeaderLogo />
 
           <View style={styles.inputContainer}>
-            <Inputs
-              placeholder="Username"
-              value={useState}
-              onChangeText={onChangeUsernameHandler}
-              label="user"
-            />
-
             <Inputs
               value={email}
               onChangeText={onChangeEmailHandler}
@@ -59,39 +37,6 @@ const SignupScreen = ({ navigation }) => {
               placeholder="Email"
               label="envelope"
               keyboardType="email-address"
-            />
-
-            <Inputs
-              onChangeText={onChangePasswordHandler}
-              textContentType="password"
-              placeholder="Password"
-              label="lock"
-              value={password}
-              secureTextEntry={!showPassword}
-              rightIcon={
-                <Icon
-                  name={showPassword ? "eye" : "eye-slash"}
-                  size={24}
-                  color={COLORS.blue}
-                  onPress={() => setShowPassword(!showPassword)}
-                />
-              }
-            />
-
-            <Inputs
-              onChangeText={onChangePasswordHandler}
-              textContentType="password"
-              placeholder="Comfirm Password"
-              label="lock"
-              secureTextEntry={!showPassword}
-              rightIcon={
-                <Icon
-                  name={showPassword ? "eye" : "eye-slash"}
-                  size={24}
-                  color={COLORS.blue}
-                  onPress={() => setShowPassword(!showPassword)}
-                />
-              }
             />
 
             <Button
@@ -103,11 +48,20 @@ const SignupScreen = ({ navigation }) => {
                 width: 300,
               }}
               containerStyle={{ alignItems: "center" }}
-              title="Sign up"
-              onPress={onSubmitHandler}
+              title="Reset Password"
+              onPress={() => {}}
               color={COLORS.black}
               style={styles.btn}
             />
+          </View>
+          <View style={styles.or}>
+            <TouchableWithoutFeedback
+              onPress={() => {
+                navigation.navigate("Login");
+              }}
+            >
+              <Text style={styles.orText}>Login</Text>
+            </TouchableWithoutFeedback>
           </View>
 
           <View
@@ -116,13 +70,13 @@ const SignupScreen = ({ navigation }) => {
             }}
           >
             <Text style={styles.account}>
-              Already have an account? &nbsp;
+              Don't have an account? &nbsp;
               <TouchableWithoutFeedback
                 onPress={() => {
-                  navigation.navigate("Login");
+                  navigation.navigate("Signup");
                 }}
               >
-                <Text style={styles.signup}>Login</Text>
+                <Text style={styles.signup}>Sign Up</Text>
               </TouchableWithoutFeedback>
             </Text>
           </View>
@@ -145,12 +99,15 @@ const styles = StyleSheet.create({
     color: COLORS.gray,
   },
   or: {
-    flex: 1,
-    alignItems: "center",
-    ...FONTS.tiny,
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+    paddingHorizontal: 42,
   },
   orText: {
-    color: COLORS.gray,
+    color: COLORS.blue,
+    fontSize: 14,
+    padding: 9,
+    ...FONTS.tiny,
   },
   social: {
     flexDirection: "row",
@@ -182,6 +139,31 @@ const styles = StyleSheet.create({
     alignContent: "center",
     backgroundColor: COLORS.bgColor,
   },
+  imgContainer: {
+    flex: 1,
+    alignContent: "center",
+    alignItems: "center",
+  },
+  img: {
+    flex: 1,
+    margin: 20,
+    width: 400,
+    height: 400,
+    alignContent: "center",
+    alignItems: "center",
+  },
+  titleContainer: {
+    flex: 1,
+    alignItems: "center",
+    marginTop: 73,
+    justifyContent: "center",
+  },
+  title: {
+    marginTop: -12,
+    fontSize: 40,
+    ...FONTS.h1,
+    color: COLORS.blue,
+  },
 });
 
-export default SignupScreen;
+export default ForgotPasswordScreen;
