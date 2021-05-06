@@ -1,4 +1,5 @@
 import { SIZES } from "../constants/sizes";
+
 export const FONTS = {
   h1: {
     fontFamily: "Roboto-Black",
@@ -39,5 +40,9 @@ export const FONTS = {
     fontFamily: "Roboto-Regular",
     fontSize: SIZES.body4,
     lineHeight: 22,
+  },
+  tiny: {
+    fontFamily: "Roboto-Regular",
+    fontSize: 16,
   },
 };

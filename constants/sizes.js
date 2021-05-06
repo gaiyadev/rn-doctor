@@ -8,7 +8,6 @@ export const SIZES = {
   padding: 24,
 
   // font sizes
-  largeTitle: 50,
   h1: 30,
   h2: 22,
   h3: 16,
@@ -17,6 +16,7 @@ export const SIZES = {
   body2: 22,
   body3: 16,
   body4: 14,
+
   // app dimensions
   width,
   height,

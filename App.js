@@ -3,6 +3,8 @@ import * as React from "react";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 import Navigator from "./navigation/routes";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
 export default function App() {
   const [loaded] = useFonts({
     "Roboto-Black": require("./assets/fonts/Roboto-Black.ttf"),
@@ -14,5 +16,9 @@ export default function App() {
     return <AppLoading />;
   }
 
-  return <Navigator />;
+  return (
+    <SafeAreaProvider>
+      <Navigator />
+    </SafeAreaProvider>
+  );
 }
