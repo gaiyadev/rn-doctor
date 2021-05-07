@@ -3,17 +3,18 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
+  Platform,
   TouchableWithoutFeedback,
   ScrollView,
+  Keyboard,
   KeyboardAvoidingView,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
 import Button from "../components/forms/Button";
 import Inputs from "../components/forms/Input";
 import { COLORS } from "../constants/colors";
 import { FONTS } from "../constants/fonts";
 import HeaderLogo from "../components/forms/HeaderLogo";
+import BackArrowButton from "../components/UI/BackArrowButton";
 
 const ForgotPasswordScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -24,14 +25,34 @@ const ForgotPasswordScreen = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container}>
+    <KeyboardAvoidingView
+      onPress={Keyboard.dismiss}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
       <ScrollView>
         <View style={styles.container}>
+          <BackArrowButton onPress={() => navigation.goBack()} />
+
           <HeaderLogo />
+
+          <View style={styles.forgotTextContainer}>
+            <Text
+              style={{
+                fontFamily: "Roboto-Regular",
+                paddingHorizontal: 12,
+                paddingVertical: 7,
+                fontSize: 14,
+              }}
+            >
+              Enter your registered email address below to recieve instruction
+            </Text>
+          </View>
 
           <View style={styles.inputContainer}>
             <Inputs
               value={email}
+              autoFocus={true}
               onChangeText={onChangeEmailHandler}
               textContentType="emailAddress"
               placeholder="Email"
@@ -51,7 +72,6 @@ const ForgotPasswordScreen = ({ navigation }) => {
               title="Reset Password"
               onPress={() => {}}
               color={COLORS.black}
-              style={styles.btn}
             />
           </View>
           <View style={styles.or}>
@@ -86,9 +106,11 @@ const ForgotPasswordScreen = ({ navigation }) => {
   );
 };
 const styles = StyleSheet.create({
-  socialLogo: {
-    width: 25,
-    height: 25,
+  forgotTextContainer: {
+    padding: 13,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
   signup: {
     ...FONTS.tiny,
@@ -97,6 +119,7 @@ const styles = StyleSheet.create({
   account: {
     ...FONTS.tiny,
     color: COLORS.gray,
+    paddingVertical: 12,
   },
   or: {
     justifyContent: "flex-end",
@@ -109,12 +132,7 @@ const styles = StyleSheet.create({
     padding: 9,
     ...FONTS.tiny,
   },
-  social: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    padding: 34,
-  },
+
   forgotPassword: {
     paddingBottom: 6,
     paddingTop: 1,
@@ -128,41 +146,12 @@ const styles = StyleSheet.create({
   inputContainer: {
     padding: 12,
   },
-  btn: {
-    borderRadius: 50,
-    padding: 12,
-    // color: COLORS.accentColor,
-  },
+
   container: {
     flex: 1,
     marginTop: 30,
     alignContent: "center",
     backgroundColor: COLORS.bgColor,
-  },
-  imgContainer: {
-    flex: 1,
-    alignContent: "center",
-    alignItems: "center",
-  },
-  img: {
-    flex: 1,
-    margin: 20,
-    width: 400,
-    height: 400,
-    alignContent: "center",
-    alignItems: "center",
-  },
-  titleContainer: {
-    flex: 1,
-    alignItems: "center",
-    marginTop: 73,
-    justifyContent: "center",
-  },
-  title: {
-    marginTop: -12,
-    fontSize: 40,
-    ...FONTS.h1,
-    color: COLORS.blue,
   },
 });
 

@@ -4,6 +4,18 @@ import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 import Navigator from "./navigation/routes";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { ThemeProvider } from "react-native-elements";
+import { MenuProvider } from "react-native-popup-menu";
+
+const theme = {
+  Button: {
+    raised: false,
+  },
+
+  Avatar: {
+    rounded: true,
+  },
+};
 
 export default function App() {
   const [loaded] = useFonts({
@@ -18,7 +30,11 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <Navigator />
+      <ThemeProvider theme={theme}>
+        <MenuProvider>
+          <Navigator />
+        </MenuProvider>
+      </ThemeProvider>
     </SafeAreaProvider>
   );
 }

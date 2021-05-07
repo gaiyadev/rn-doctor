@@ -1,41 +1,31 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  Image,
-  TouchableWithoutFeedback,
-} from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
-
-import { COLORS } from "../../constants/colors";
-import { ICONS } from "../../constants/icons";
+import { View, StyleSheet } from "react-native";
+import { SocialIcon } from "react-native-elements";
 
 const SocialLinks = () => {
   return (
     <View style={styles.social}>
-      <TouchableWithoutFeedback
+      <SocialIcon
         onPress={() => {
-          console.log("fb");
+          console.log("signing with fb");
         }}
-      >
-        <Image style={styles.socialLogo} source={ICONS.google} />
-      </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback
+        raised={false}
+        type="facebook"
+      />
+      <SocialIcon
+        raised={false}
         onPress={() => {
-          console.log("gogle");
+          console.log("signing with google");
         }}
-      >
-        <Image style={styles.socialLogo} source={ICONS.twitter} />
-      </TouchableWithoutFeedback>
-      <Icon name="facebook" size={27} color={COLORS.fb} />
-
-      {/* <TouchableWithoutFeedback
-              onPress={() => {
-                console.log("gogle");
-              }}
-            >
-              <Image style={styles.socialLogo} source={ICONS.twitter} />
-            </TouchableWithoutFeedback> */}
+        type="google"
+      />
+      <SocialIcon
+        raised={false}
+        onPress={() => {
+          console.log("signing with twitter");
+        }}
+        type="twitter"
+      />
     </View>
   );
 };
@@ -45,11 +35,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    padding: 34,
-  },
-  socialLogo: {
-    width: 25,
-    height: 25,
+    padding: 15,
   },
 });
 

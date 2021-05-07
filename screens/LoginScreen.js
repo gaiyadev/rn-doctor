@@ -6,6 +6,8 @@ import {
   TouchableWithoutFeedback,
   ScrollView,
   KeyboardAvoidingView,
+  Platform,
+  Keyboard,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Button from "../components/forms/Button";
@@ -14,46 +16,49 @@ import { COLORS } from "../constants/colors";
 import { FONTS } from "../constants/fonts";
 import SocialLinks from "../components/forms/SocialLinks";
 import HeaderLogo from "../components/forms/HeaderLogo";
+import * as Animatable from "react-native-animatable";
+import BackArrowButton from "../components/UI/BackArrowButton";
 
 const LoginScreen = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Email input
-  const onChangeEmailHandler = (emailVal) => {
-    setEmail(emailVal);
-  };
-  // Password input
-  const onChangePasswordHandler = (passwordVal) => {
-    setPassword(passwordVal);
-  };
-
   // Submitting data
   const onSubmitHandler = () => {
     const user = { email, password };
     console.log(user);
+    navigation.navigate("Otp");
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container}>
+    <KeyboardAvoidingView
+      onPress={Keyboard.dismiss}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
       <ScrollView>
         <View style={styles.container}>
+          <BackArrowButton onPress={() => navigation.goBack()} />
+
           <HeaderLogo />
 
           <View style={styles.inputContainer}>
             <Inputs
+              autoFocus={true}
               value={email}
-              onChangeText={onChangeEmailHandler}
+              onChangeText={(text) => setEmail(text)}
               textContentType="emailAddress"
               placeholder="Email"
               label="envelope"
               keyboardType="email-address"
+              returnKeyLabel="next"
             />
             <Inputs
-              onChangeText={onChangePasswordHandler}
+              onChangeText={(text) => setPassword(text)}
               textContentType="password"
               placeholder="Password"
+              returnKeyLabel="done"
               label="lock"
               value={password}
               secureTextEntry={!showPassword}
@@ -92,10 +97,17 @@ const LoginScreen = ({ navigation }) => {
             />
           </View>
           <View style={styles.or}>
-            <Text style={styles.orText}>Or login with</Text>
+            <Animatable.Text
+              animation="slideInDown"
+              iterationCount={5}
+              direction="alternate"
+            >
+              Login with
+            </Animatable.Text>
           </View>
           {/* SOCIAL LOGIN */}
           <SocialLinks />
+
           <View
             style={{
               alignItems: "center",
@@ -152,7 +164,6 @@ const styles = StyleSheet.create({
   btn: {
     borderRadius: 50,
     padding: 12,
-    // color: COLORS.accentColor,
   },
   container: {
     flex: 1,

@@ -1,8 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
-import { color } from "react-native-reanimated";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { COLORS } from "../../constants/colors";
 
 const Btn = (props) => {

@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Input } from "react-native-elements";
 import { COLORS } from "../../constants/colors";
-import { color, floor } from "react-native-reanimated";
 import { FONTS } from "../../constants/fonts";
+
 const Inputs = (props) => {
   const [focused, setFocus] = useState(false);
   const {
@@ -16,9 +16,12 @@ const Inputs = (props) => {
     secureTextEntry,
     textContentType,
     onChangeText,
+    returnKeyLabel,
+    autoFocus,
   } = props;
   return (
     <Input
+      autoFocus={autoFocus}
       labelStyle={{
         color: COLORS.blue,
         ...FONTS.tiny,
@@ -31,6 +34,7 @@ const Inputs = (props) => {
       keyboardType={keyboardType}
       onChangeText={onChangeText}
       label={placeholder}
+      returnKeyLabel={returnKeyLabel}
       secureTextEntry={secureTextEntry}
       leftIcon={
         <Icon

@@ -6,6 +6,8 @@ import {
   TouchableWithoutFeedback,
   ScrollView,
   KeyboardAvoidingView,
+  Platform,
+  Keyboard,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Button from "../components/forms/Button";
@@ -13,48 +15,46 @@ import Inputs from "../components/forms/Input";
 import { COLORS } from "../constants/colors";
 import { FONTS } from "../constants/fonts";
 import HeaderLogo from "../components/forms/HeaderLogo";
+import BackArrowButton from "../components/UI/BackArrowButton";
 
 const SignupScreen = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [comfirmPassword, setcomfirmPassword] = useState("");
+
   const [username, setUsername] = useState("");
 
-  // Email input
-  const onChangeEmailHandler = (emailVal) => {
-    setEmail(emailVal);
-  };
-  // Password input
-  const onChangePasswordHandler = (passwordVal) => {
-    setPassword(passwordVal);
-  };
-  const onChangeUsernameHandler = (usernameVal) => {
-    setUsername(usernameVal);
-  };
   // Submitting data
   const onSubmitHandler = () => {
-    const user = { email, password, username };
+    const user = { email, password, username, comfirmPassword };
     console.log(user);
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container}>
+    <KeyboardAvoidingView
+      onPress={Keyboard.dismiss}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
       <ScrollView>
         <View style={styles.container}>
+          <BackArrowButton onPress={() => navigation.goBack()} />
+
           {/* logo */}
           <HeaderLogo />
-
           <View style={styles.inputContainer}>
             <Inputs
+              autoFocus={true}
               placeholder="Username"
               value={useState}
-              onChangeText={onChangeUsernameHandler}
+              onChangeText={(text) => setUsername(text)}
               label="user"
             />
 
             <Inputs
               value={email}
-              onChangeText={onChangeEmailHandler}
+              onChangeText={(text) => setEmail(text)}
               textContentType="emailAddress"
               placeholder="Email"
               label="envelope"
@@ -62,7 +62,7 @@ const SignupScreen = ({ navigation }) => {
             />
 
             <Inputs
-              onChangeText={onChangePasswordHandler}
+              onChangeText={(text) => setPassword(text)}
               textContentType="password"
               placeholder="Password"
               label="lock"
@@ -79,7 +79,7 @@ const SignupScreen = ({ navigation }) => {
             />
 
             <Inputs
-              onChangeText={onChangePasswordHandler}
+              onChangeText={(text) => setcomfirmPassword(text)}
               textContentType="password"
               placeholder="Comfirm Password"
               label="lock"
@@ -103,13 +103,11 @@ const SignupScreen = ({ navigation }) => {
                 width: 300,
               }}
               containerStyle={{ alignItems: "center" }}
-              title="Sign up"
+              title="Sign Up"
               onPress={onSubmitHandler}
               color={COLORS.black}
-              style={styles.btn}
             />
           </View>
-
           <View
             style={{
               alignItems: "center",
@@ -171,11 +169,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     padding: 12,
   },
-  btn: {
-    borderRadius: 50,
-    padding: 12,
-    // color: COLORS.accentColor,
-  },
+
   container: {
     flex: 1,
     marginTop: 30,
