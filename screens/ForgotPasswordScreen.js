@@ -19,11 +19,6 @@ import BackArrowButton from "../components/UI/BackArrowButton";
 const ForgotPasswordScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
 
-  // Email input
-  const onChangeEmailHandler = (emailVal) => {
-    setEmail(emailVal);
-  };
-
   return (
     <KeyboardAvoidingView
       onPress={Keyboard.dismiss}
@@ -53,7 +48,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
             <Inputs
               value={email}
               autoFocus={true}
-              onChangeText={onChangeEmailHandler}
+              onChangeText={(text) => setEmail(text)}
               textContentType="emailAddress"
               placeholder="Email"
               label="envelope"
@@ -105,6 +100,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
     </KeyboardAvoidingView>
   );
 };
+
 const styles = StyleSheet.create({
   forgotTextContainer: {
     padding: 13,

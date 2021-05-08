@@ -15,4 +15,5 @@ export const COLORS = {
   google: "#EA4235",
   activeiconColor: "#487CFF",
   inAtiveIconColor: "#B4B6BE",
+  card: "#FAFBFF",
 };

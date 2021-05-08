@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, KeyboardAvoidingView, Keyboard } from "react-native";
+import { View, KeyboardAvoidingView, Keyboard, ScrollView } from "react-native";
 import OTPTextInput from "react-native-otp-textinput";
 import Button from "../components/forms/Button";
 import { COLORS } from "../constants/colors";
@@ -11,10 +11,11 @@ const OtpScreen = ({ navigation }) => {
     if (!otp || otp.length !== 4) {
       return;
     }
-    navigation.reset({
-      index: 0,
-      routes: [{ name: "Home" }],
-    });
+    // navigation.reset({
+    //   index: 0,
+    //   routes: [{ name: "Home" }],
+    // });
+    navigation.navigate("Home");
 
     console.log(otp);
   };

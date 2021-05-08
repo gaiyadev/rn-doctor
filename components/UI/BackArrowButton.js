@@ -1,7 +1,7 @@
 import React from "react";
+import { View, Platform } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { COLORS } from "../../constants/colors";
-import { View, Text, Platform } from "react-native";
 
 const BackArrowButton = (props) => {
   const { onPress } = props;

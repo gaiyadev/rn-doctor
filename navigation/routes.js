@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import OnboardScreen from "../screens/onBoard/OnboardingScreen";
@@ -12,6 +11,13 @@ import BottomTabs from "../navigation/tabs/BottomTabs";
 const OnboardStack = createStackNavigator();
 import { COLORS } from "../constants/colors";
 import Icon from "react-native-vector-icons/Ionicons";
+import { View, Text, StyleSheet } from "react-native";
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from "react-native-popup-menu";
 
 const Onboard = () => {
   return (
@@ -106,17 +112,64 @@ const Onboard = () => {
                 name="menu-outline"
               />
             ),
-            // headerRight: () => (
-            //   <Icon
-            //     onPress={() => {
-            //       console.log("draewr");
-            //     }}
-            //     color={COLORS.blue}
-            //     style={{ paddingHorizontal: 10 }}
-            //     size={30}
-            //     name="person-outline"
-            //   />
-            // ),
+            headerRight: () => (
+              <View>
+                <Menu>
+                  <MenuTrigger>
+                    <Icon
+                      style={{
+                        paddingHorizontal: 10,
+                      }}
+                      name={
+                        Platform.OS === "android"
+                          ? "ellipsis-vertical-outline"
+                          : "ellipsis-vertical-outline"
+                      }
+                      size={25}
+                      color={
+                        Platform.OS === "android" ? COLORS.blue : COLORS.blue
+                      }
+                    />
+                  </MenuTrigger>
+                  <MenuOptions>
+                    <MenuOption
+                      style={styles.container}
+                      onSelect={() => console.log("ac")}
+                    >
+                      <Text style={styles.title}>
+                        <Icon style={styles.icons} name="person-outline" />
+                        Account
+                      </Text>
+                    </MenuOption>
+                    <MenuOption
+                      style={styles.container}
+                      onSelect={() => console.log("ac")}
+                    >
+                      <Text style={styles.title}>
+                        <Icon
+                          style={styles.icons}
+                          name="information-circle-outline"
+                        />
+                        Help
+                      </Text>
+                    </MenuOption>
+                    <MenuOption
+                      style={styles.container}
+                      onSelect={() => alert(`Delete`)}
+                    >
+                      <Text style={styles.title}>
+                        <Icon
+                          style={styles.icons}
+                          name="trash-outline"
+                          style={styles.icons}
+                        />
+                        Delete Account
+                      </Text>
+                    </MenuOption>
+                  </MenuOptions>
+                </Menu>
+              </View>
+            ),
           })}
         />
       </OnboardStack.Navigator>
@@ -124,4 +177,18 @@ const Onboard = () => {
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    padding: 9,
+    elevation: 10,
+    backgroundColor: COLORS.white,
+  },
+  icons: {
+    color: COLORS.blue,
+  },
+  title: {
+    fontFamily: "Roboto-Regular",
+    fontSize: 13,
+  },
+});
 export default Onboard;

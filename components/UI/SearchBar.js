@@ -1,52 +1,72 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Keyboard,
+  KeyboardAvoidingView,
+  ScrollView,
+} from "react-native";
+import { SearchBar } from "react-native-elements";
 import { COLORS } from "../../constants/colors";
 import { FONTS } from "../../constants/fonts";
-
-import { SearchBar } from "react-native-elements";
 
 const SearchBarComp = () => {
   const [search, setSearch] = useState("");
 
+  // SUbmitting
+  const onSubmitHandler = () => {
+    console.log(search);
+  };
+
   return (
-    <View
-      style={{
-        marginVertical: 10,
-      }}
+    <KeyboardAvoidingView
+      onPress={Keyboard.dismiss}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <SearchBar
-        searchIcon={{
-          color: COLORS.blue,
-        }}
-        clearIcon={{
-          color: "red",
-        }}
-        inputContainerStyle={{
-          backgroundColor: COLORS.white,
-          borderRadius: 5,
-        }}
-        leftIconContainerStyle={{
-          backgroundColor: "white",
-          borderRadius: 5,
-        }}
-        inputStyle={{ backgroundColor: COLORS.gray, borderRadius: 5 }}
-        containerStyle={{
-          elevation: 5,
-          borderRadius: 5,
-          height: 47,
-          backgroundColor: "transparent",
-          justifyContent: "space-around",
-          borderTopWidth: 0,
-          borderBottomWidth: 0,
-        }}
-        style={styles.search}
-        onChangeText={(text) => setSearch(text)}
-        placeholder="Type Here..."
-        value={search}
-      />
-    </View>
+      <ScrollView>
+        <View
+          style={{
+            marginVertical: 10,
+          }}
+        >
+          <SearchBar
+            onEndEditing={onSubmitHandler}
+            onChangeText={onSubmitHandler}
+            searchIcon={{
+              color: COLORS.blue,
+            }}
+            clearIcon={{
+              color: "red",
+            }}
+            inputContainerStyle={{
+              backgroundColor: COLORS.white,
+              borderRadius: 5,
+            }}
+            leftIconContainerStyle={{
+              backgroundColor: "white",
+              borderRadius: 5,
+            }}
+            inputStyle={{ backgroundColor: COLORS.white, borderRadius: 5 }}
+            containerStyle={{
+              elevation: 5,
+              borderRadius: 5,
+              height: 47,
+              backgroundColor: "transparent",
+              justifyContent: "space-around",
+              borderTopWidth: 0,
+              borderBottomWidth: 0,
+            }}
+            style={styles.search}
+            onChangeText={(text) => setSearch(text)}
+            placeholder="Search Here..."
+            value={search}
+          />
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
+
 const styles = StyleSheet.create({
   search: {
     flex: 1,

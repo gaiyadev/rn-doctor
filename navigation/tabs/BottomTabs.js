@@ -49,15 +49,15 @@ export default function App() {
         }}
       />
       <Tab.Screen
-        name="Settings"
+        name="Chats"
         component={SittingsScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <Icon
               name={
                 Platform.OS === "android"
-                  ? "settings-outline"
-                  : "settings-outline"
+                  ? "chatbubble-ellipses-outline"
+                  : "chatbubble-ellipses-outline"
               }
               size={25}
               color={Platform.OS === "android" ? COLORS.white : COLORS.white}
