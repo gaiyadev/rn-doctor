@@ -10,8 +10,7 @@ export const users = [
     id: "2",
     subtitle: "Dentist",
     name: "brynn",
-    avatar:
-      "https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png",
+    avatar: "https://avatars.githubusercontent.com/u/49751060?v=4",
   },
   {
     id: "3",

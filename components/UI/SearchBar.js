@@ -27,6 +27,7 @@ const SearchBarComp = () => {
         <View
           style={{
             marginVertical: 10,
+            padding: 7,
           }}
         >
           <SearchBar
@@ -46,19 +47,16 @@ const SearchBarComp = () => {
               backgroundColor: "white",
               borderRadius: 5,
             }}
-            inputStyle={{ backgroundColor: COLORS.white, borderRadius: 5 }}
             containerStyle={{
               elevation: 5,
-              borderRadius: 5,
+              borderRadius: 15,
               height: 47,
-              backgroundColor: "transparent",
+              backgroundColor: COLORS.why,
               justifyContent: "space-around",
-              borderTopWidth: 0,
-              borderBottomWidth: 0,
             }}
             style={styles.search}
             onChangeText={(text) => setSearch(text)}
-            placeholder="Search Here..."
+            placeholder="Search doctor..."
             value={search}
           />
         </View>
@@ -71,6 +69,7 @@ const styles = StyleSheet.create({
   search: {
     flex: 1,
     paddingVertical: 10,
+
     backgroundColor: COLORS.white,
   },
   findADoctor: {

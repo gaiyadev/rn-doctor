@@ -17,19 +17,25 @@ import { users } from "../data/doctor";
 import DepartmentList from "../components/UI/Department";
 import Doctors from "../components/UI/Doctors";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ScrollView>
         <View style={styles.welcome}>
-          <Text>Hello, gaiyadev</Text>
+          <Text
+            style={{
+              color: "#979BA5",
+            }}
+          >
+            Hello, gaiyadev
+          </Text>
           <Text style={styles.findADoctor}>Find your doctor</Text>
           {/*  */}
           <SearchBarComp />
 
           <View style={{ padding: 3, elevation: 5 }}>
             <Image
-              style={{ width: "100%", height: 150 }}
+              style={{ width: "100%", height: 150, borderRadius: 15 }}
               source={require("../assets/images/onboarding-2.png")}
             />
           </View>
@@ -45,7 +51,7 @@ const HomeScreen = () => {
               What do you need?
             </Text>
             <FlatList
-              horizontal={true}
+              horizontal
               data={Departments}
               keyExtractor={(item) => item.id.toString()}
               renderItem={(itemData) => {
@@ -76,7 +82,7 @@ const HomeScreen = () => {
                   fontSize: 16,
                 }}
               >
-                Top doctor
+                Top Doctor
               </Text>
             </TouchableWithoutFeedback>
 
@@ -105,6 +111,7 @@ const HomeScreen = () => {
               renderItem={(itemData) => {
                 return (
                   <Doctors
+                    navigation={navigation}
                     name={itemData.item.name}
                     avatar={itemData.item.avatar}
                     id={itemData.item.id}

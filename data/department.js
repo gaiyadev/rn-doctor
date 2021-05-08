@@ -2,17 +2,17 @@ export const Departments = [
   {
     id: 1,
     title: "General",
-    icon: "shield-outline",
+    icon: "information-outline",
   },
   {
     id: 2,
     title: "Cardiology",
-    icon: "information-circle-outline",
+    icon: "heart-outline",
   },
   {
     id: 3,
     title: "Dental",
-    icon: "shield-outline",
+    icon: "sunny-outline",
   },
   {
     id: 4,
@@ -21,62 +21,92 @@ export const Departments = [
   },
   {
     id: 5,
-    title: "ssss",
-    icon: "heart-circle-outline",
+    title: "Allergy and immunology",
+    icon: "water-outline",
   },
   {
     id: 6,
-    title: "ssss",
+    title: "Anesthesiology",
     icon: "heart-circle-outline",
   },
   {
     id: 7,
-    title: "ssss",
-    icon: "information-circle-outline",
+    title: "Dermatology",
+    icon: "git-network-outline",
   },
   {
     id: 8,
-    title: "ssss",
+    title: "Diagnostic radiology",
     icon: "information-circle-outline",
   },
   {
     id: 9,
-    title: "ssss",
+    title: "Emergency mediciness",
     icon: "heart-circle-outline",
   },
   {
     id: 10,
-    title: "ssss",
+    title: "Family medicine",
     icon: "information-circle-outline",
   },
   {
     id: 11,
-    title: "ssss",
+    title: "Internal medicine",
     icon: "information-circle-outline",
   },
   {
     id: 12,
-    title: "ssss",
+    title: "Obstetrics and gynecology",
     icon: "information-circle-outline",
   },
   {
     id: 13,
-    title: "ssss",
+    title: "Nuclear medicine",
     icon: "information-circle-outline",
   },
   {
     id: 14,
-    title: "ssss",
+    title: "Ophthalmology",
     icon: "information-circle-outline",
   },
   {
     id: 15,
-    title: "ssss",
+    title: "Pathology",
     icon: "information-circle-outline",
   },
   {
     id: 16,
-    title: "ssss",
+    title: "Pediatrics",
+    icon: "information-circle-outline",
+  },
+  {
+    id: 17,
+    title: "Physical medicine and rehabilitation",
+    icon: "information-circle-outline",
+  },
+  {
+    id: 18,
+    title: "Preventive medicine",
+    icon: "information-circle-outline",
+  },
+  {
+    id: 19,
+    title: "Psychiatry",
+    icon: "information-circle-outline",
+  },
+  {
+    id: 20,
+    title: "Radiation oncology",
+    icon: "information-circle-outline",
+  },
+  {
+    id: 21,
+    title: "Surgery",
+    icon: "information-circle-outline",
+  },
+  {
+    id: 22,
+    title: "Urology",
     icon: "information-circle-outline",
   },
 ];

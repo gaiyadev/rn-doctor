@@ -1,13 +1,12 @@
 import * as React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { StyleSheet } from "react-native";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import AppointmentScreen from "../../screens/tabsScreen/AppointmentScreen";
 import SittingsScreen from "../../screens/tabsScreen/SittingsScreen";
 import ProfileScreen from "../../screens/tabsScreen/ProfileScreen";
 import HomeScreen from "../../screens/HomeScreen";
 import { COLORS } from "../../constants/colors";
 import Icon from "react-native-vector-icons/Ionicons";
-
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -97,3 +96,16 @@ export default function App() {
     </Tab.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  shadow: {
+    shadowColor: COLORS.bgColor,
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.25,
+    elevation: 5,
+    shadowRadius: 3.25,
+  },
+});

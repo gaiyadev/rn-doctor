@@ -45,7 +45,6 @@ const SignupScreen = ({ navigation }) => {
           <HeaderLogo />
           <View style={styles.inputContainer}>
             <Inputs
-              autoFocus={true}
               placeholder="Username"
               value={useState}
               onChangeText={(text) => setUsername(text)}

@@ -31,6 +31,7 @@ const OtpScreen = ({ navigation }) => {
     >
       <KeyboardAvoidingView onPress={Keyboard.dismiss}>
         <OTPTextInput
+          autoFocus={true}
           tintColor={COLORS.blue}
           handleTextChange={(text) => setOtp(text)}
         />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   View,
   Text,
@@ -45,7 +45,6 @@ const LoginScreen = ({ navigation }) => {
 
           <View style={styles.inputContainer}>
             <Inputs
-              autoFocus={true}
               value={email}
               onChangeText={(text) => setEmail(text)}
               textContentType="emailAddress"

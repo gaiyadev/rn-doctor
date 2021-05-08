@@ -31,7 +31,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
 
           <HeaderLogo />
 
-          <View style={styles.forgotTextContainer}>
+          {/* <View style={styles.forgotTextContainer}>
             <Text
               style={{
                 fontFamily: "Roboto-Regular",
@@ -42,7 +42,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
             >
               Enter your registered email address below to recieve instruction
             </Text>
-          </View>
+          </View> */}
 
           <View style={styles.inputContainer}>
             <Inputs

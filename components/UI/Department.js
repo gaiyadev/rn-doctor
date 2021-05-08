@@ -36,6 +36,7 @@ const DepartmentList = (props) => {
         <Text
           style={{
             paddingVertical: 7,
+            paddingHorizontal: 10,
           }}
         >
           {title}
