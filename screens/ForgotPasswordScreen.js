@@ -22,6 +22,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView
       onPress={Keyboard.dismiss}
+      keyboardVerticalOffset={100}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
     >

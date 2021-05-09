@@ -20,7 +20,12 @@ import Doctors from "../components/UI/Doctors";
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView
+        style={{
+          flex: 1,
+          backgroundColor: COLORS.white,
+        }}
+      >
         <View style={styles.welcome}>
           <Text
             style={{
@@ -88,7 +93,7 @@ const HomeScreen = ({ navigation }) => {
 
             <TouchableWithoutFeedback
               onPress={() => {
-                console.log("veiw all press");
+                navigation.navigate("AllDoctor");
               }}
             >
               <Text

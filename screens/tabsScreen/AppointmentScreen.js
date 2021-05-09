@@ -1,18 +1,71 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
+import { ListItem } from "react-native-elements";
+import { COLORS, FONTS } from "../../constants/onboard";
 
+import { Appointment } from "../../data/appointments";
 const AppointmentScreen = () => {
   return (
-    <View
+    <ScrollView
       style={{
+        backgroundColor: COLORS.white,
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        alignContent: "center",
       }}
     >
-      <Text>AppointmentScreen</Text>
-    </View>
+      <View
+        style={{
+          padding: 10,
+        }}
+      >
+        {Appointment.map((item, i) => (
+          <ListItem
+            key={i}
+            bottomDivider
+            style={{
+              padding: 3,
+            }}
+          >
+            <ListItem.Content
+              style={{
+                padding: 4,
+              }}
+            >
+              <ListItem.Title
+                style={{
+                  paddingVertical: 4,
+                  ...FONTS.h4,
+                  color: COLORS.blue,
+                }}
+              >
+                {item.title}
+              </ListItem.Title>
+              <ListItem.Subtitle
+                style={{
+                  paddingVertical: 4,
+                  ...FONTS.tiny,
+                }}
+              >
+                {item.doctor}
+              </ListItem.Subtitle>
+              <ListItem.Subtitle
+                style={{
+                  paddingVertical: 4,
+                  ...FONTS.tiny,
+                }}
+              >
+                {item.subtitle}
+              </ListItem.Subtitle>
+            </ListItem.Content>
+            <ListItem.Chevron
+              size={34}
+              iconStyle={{
+                color: COLORS.blue,
+              }}
+            />
+          </ListItem>
+        ))}
+      </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({});

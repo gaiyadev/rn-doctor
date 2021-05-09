@@ -4,7 +4,7 @@ import { COLORS } from "../../constants/colors";
 const SittingsScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>SittingsScreen</Text>
+      <Text>chat</Text>
     </View>
   );
 };

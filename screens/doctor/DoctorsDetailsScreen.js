@@ -13,7 +13,12 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 const DoctorsDetailsScreen = () => {
   return (
-    <ScrollView>
+    <ScrollView
+      style={{
+        flex: 1,
+        backgroundColor: COLORS.white,
+      }}
+    >
       <View style={styles.container}>
         <View
           style={{
@@ -223,6 +228,10 @@ const styles = StyleSheet.create({
     marginLeft: 4,
     marginTop: 17,
     paddingVertical: 24,
+    paddingHorizontal: 6,
+    marginRight: 13,
+    marginLeft: 13,
+    marginTop: 19,
   },
 });
 

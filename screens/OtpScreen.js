@@ -29,7 +29,12 @@ const OtpScreen = ({ navigation }) => {
         padding: 45,
       }}
     >
-      <KeyboardAvoidingView onPress={Keyboard.dismiss}>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        keyboardVerticalOffset={100}
+        onPress={Keyboard.dismiss}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
         <OTPTextInput
           autoFocus={true}
           tintColor={COLORS.blue}

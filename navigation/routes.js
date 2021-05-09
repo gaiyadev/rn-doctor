@@ -28,8 +28,9 @@ import AccountScreen from "../screens/user/AccountScreen";
 import ChangePassswordScreen from "../screens/user/ChangePassswordScreen";
 import HelpScreen from "../screens/HelpScreen";
 import DoctorsDetailsScreen from "../screens/doctor/DoctorsDetailsScreen";
-
+import AllDoctorsScreen from "../screens/doctor/AllDoctorsScreen";
 const OnboardStack = createStackNavigator();
+
 const Onboard = () => {
   return (
     <OnboardStack.Navigator>
@@ -257,6 +258,21 @@ const Onboard = () => {
         component={DoctorsDetailsScreen}
         options={({ route, navigation }) => ({
           title: "Dr. Bryan",
+          headerStyle: {
+            backgroundColor: COLORS.white,
+          },
+          headerTintColor: COLORS.blue,
+          headerTitleStyle: {
+            ...FONTS.h2,
+          },
+          headerShown: true,
+        })}
+      />
+      <OnboardStack.Screen
+        name="AllDoctor"
+        component={AllDoctorsScreen}
+        options={({ route, navigation }) => ({
+          title: "Available Doctors",
           headerStyle: {
             backgroundColor: COLORS.white,
           },

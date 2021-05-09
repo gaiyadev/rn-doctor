@@ -36,6 +36,7 @@ const LoginScreen = ({ navigation }) => {
       onPress={Keyboard.dismiss}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
+      keyboardVerticalOffset={100}
     >
       <ScrollView>
         <View style={styles.container}>
