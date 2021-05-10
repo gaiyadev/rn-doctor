@@ -100,7 +100,7 @@ const HomeScreen = ({ navigation }) => {
                   fontSize: 16,
                 }}
               >
-                Top Doctor
+                Top Doctors
               </Text>
             </TouchableWithoutFeedback>
 
