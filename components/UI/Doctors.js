@@ -26,7 +26,6 @@ const Doctors = (props) => {
             }}
           >
             <Avatar
-              rounded
               avatarStyle={{
                 resizeMode: "cover",
               }}

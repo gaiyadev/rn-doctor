@@ -1,8 +1,14 @@
 import React from "react";
-import { View, ScrollView, StyleSheet } from "react-native";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { ListItem } from "react-native-elements";
 import { COLORS, FONTS } from "../../constants/onboard";
-
+import Icon from "react-native-vector-icons/Ionicons";
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from "react-native-popup-menu";
 import { Appointment } from "../../data/appointments";
 const AppointmentScreen = () => {
   return (
@@ -57,6 +63,10 @@ const AppointmentScreen = () => {
               </ListItem.Subtitle>
             </ListItem.Content>
             <ListItem.Chevron
+              onPress={() => {
+                console.log("d");
+              }}
+              type="user-outline"
               size={34}
               iconStyle={{
                 color: COLORS.blue,

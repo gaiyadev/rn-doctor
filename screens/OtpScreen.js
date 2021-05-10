@@ -3,7 +3,7 @@ import { View, KeyboardAvoidingView, Keyboard, ScrollView } from "react-native";
 import OTPTextInput from "react-native-otp-textinput";
 import Button from "../components/forms/Button";
 import { COLORS } from "../constants/colors";
-
+import HeaderLogo from "../components/forms/HeaderLogo";
 const OtpScreen = ({ navigation }) => {
   const [otp, setOtp] = useState();
 
@@ -29,11 +29,16 @@ const OtpScreen = ({ navigation }) => {
         padding: 45,
       }}
     >
+      <HeaderLogo />
+
       <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        keyboardVerticalOffset={100}
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 45,
+        }}
         onPress={Keyboard.dismiss}
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <OTPTextInput
           autoFocus={true}
@@ -50,7 +55,7 @@ const OtpScreen = ({ navigation }) => {
             width: 300,
           }}
           containerStyle={{ alignItems: "center" }}
-          title="Submit"
+          title="Continue"
           onPress={onSubmitHandler}
           color={COLORS.black}
         />

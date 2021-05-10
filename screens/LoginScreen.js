@@ -36,9 +36,14 @@ const LoginScreen = ({ navigation }) => {
       onPress={Keyboard.dismiss}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
-      keyboardVerticalOffset={100}
+      // keyboardVerticalOffset={100}
     >
-      <ScrollView>
+      <ScrollView
+        style={{
+          flex: 1,
+          backgroundColor: COLORS.white,
+        }}
+      >
         <View style={styles.container}>
           <BackArrowButton onPress={() => navigation.goBack()} />
 
@@ -169,7 +174,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 30,
     alignContent: "center",
-    backgroundColor: COLORS.bgColor,
+    backgroundColor: COLORS.white,
   },
 });
 

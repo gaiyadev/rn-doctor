@@ -5,7 +5,10 @@ import { ICONS } from "../../constants/icons";
 const HeaderLogo = () => {
   return (
     <View style={styles.titleContainer}>
-      <Image style={styles.img} source={ICONS.google} />
+      <Image
+        style={styles.img}
+        source={require("../../assets/images/worlwide.png")}
+      />
     </View>
   );
 };

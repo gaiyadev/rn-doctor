@@ -18,6 +18,27 @@ import DepartmentList from "../components/UI/Department";
 import Doctors from "../components/UI/Doctors";
 
 const HomeScreen = ({ navigation }) => {
+  const renderItem = (itemData) => {
+    return (
+      <DepartmentList
+        icon={itemData.item.icon}
+        title={itemData.item.title}
+        id={itemData.item.id}
+      />
+    );
+  };
+
+  const renderItemDoc = (itemData) => {
+    return (
+      <Doctors
+        navigation={navigation}
+        name={itemData.item.name}
+        avatar={itemData.item.avatar}
+        id={itemData.item.id}
+        subtitle={itemData.item.subtitle}
+      />
+    );
+  };
   return (
     <View style={styles.container}>
       <ScrollView
@@ -40,8 +61,8 @@ const HomeScreen = ({ navigation }) => {
 
           <View style={{ padding: 3, elevation: 5 }}>
             <Image
-              style={{ width: "100%", height: 150, borderRadius: 15 }}
-              source={require("../assets/images/onboarding-2.png")}
+              style={{ width: "100%", height: 200, borderRadius: 15 }}
+              source={require("../assets/images/doctor.jpg")}
             />
           </View>
           <View>
@@ -59,15 +80,7 @@ const HomeScreen = ({ navigation }) => {
               horizontal
               data={Departments}
               keyExtractor={(item) => item.id.toString()}
-              renderItem={(itemData) => {
-                return (
-                  <DepartmentList
-                    icon={itemData.item.icon}
-                    title={itemData.item.title}
-                    id={itemData.item.id}
-                  />
-                );
-              }}
+              renderItem={renderItem}
             />
           </View>
           <View
@@ -113,17 +126,7 @@ const HomeScreen = ({ navigation }) => {
               horizontal={true}
               data={users}
               keyExtractor={(item) => item.id}
-              renderItem={(itemData) => {
-                return (
-                  <Doctors
-                    navigation={navigation}
-                    name={itemData.item.name}
-                    avatar={itemData.item.avatar}
-                    id={itemData.item.id}
-                    subtitle={itemData.item.subtitle}
-                  />
-                );
-              }}
+              renderItem={renderItemDoc}
             />
           </View>
         </View>

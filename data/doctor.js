@@ -4,7 +4,7 @@ export const users = [
     name: "Dr. Brynn",
     subtitle: "Pediatricist",
     avatar:
-      "https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png",
+      "https://img.freepik.com/free-psd/doctor-with-his-arms-crossed-white-background_1368-22255.jpg?size=338&ext=jpg",
   },
   {
     id: "2",

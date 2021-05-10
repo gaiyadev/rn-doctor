@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { onBoardings } from "../../data/onboard";
 import { COLORS, FONTS, SIZES } from "../../constants/onboard";
-
+import Button from "../../components/forms/Button";
 const OnboardScreen = ({ navigation }) => {
   const [completed, setCompleted] = useState(false);
 
@@ -82,7 +82,7 @@ const OnboardScreen = ({ navigation }) => {
                   ...FONTS.body3,
                   textAlign: "center",
                   marginTop: SIZES.base,
-                  color: COLORS.gray,
+                  color: COLORS.black,
                 }}
               >
                 {item.description}
@@ -94,12 +94,12 @@ const OnboardScreen = ({ navigation }) => {
                 position: "absolute",
                 right: 0,
                 bottom: 0,
-                width: 150,
+                width: 170,
                 height: 60,
                 paddingLeft: 20,
                 justifyContent: "center",
-                borderTopLeftRadius: 30,
-                borderBottomLeftRadius: 30,
+                borderTopLeftRadius: 15,
+                borderBottomLeftRadius: 15,
                 borderBottomRightRadius: 0,
                 borderTopRightRadius: 0,
                 backgroundColor: COLORS.blue,

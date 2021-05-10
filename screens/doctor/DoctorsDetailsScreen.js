@@ -78,10 +78,10 @@ const DoctorsDetailsScreen = () => {
                   <SocialIcon
                     small
                     onPress={() => {
-                      console.log("signing with fb");
+                      console.log("signing with ig");
                     }}
                     raised={false}
-                    type="youtube"
+                    type="instagram"
                   />
                   &nbsp;
                   <SocialIcon

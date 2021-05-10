@@ -13,7 +13,7 @@ const theme = {
   },
 
   Avatar: {
-    rounded: true,
+    rounded: false,
   },
 };
 
